@@ -1,0 +1,4 @@
+{
+    "/api/product/all": "/retail/product",
+    "/api/product/branch/:branchId": "/retail/products/:branchShortId"
+}

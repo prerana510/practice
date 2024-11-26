@@ -1,0 +1,391 @@
+{
+  "branch":[
+    {
+      "branchLocation": "New York",
+      "branchRegion": "East Coast",
+      "branchMobileNumber": 1234567890,
+      "branchEmail": "ny_branch@example.com",
+      "branchShortId": "BR001"
+    },
+    {
+      "branchLocation": "Los Angeles",
+      "branchRegion": "West Coast",
+      "branchMobileNumber": 9876543210,
+      "branchEmail": "la_branch@example.com",
+      "branchShortId": "BR002"
+    },
+    {
+      "branchLocation": "Chicago",
+      "branchRegion": "Midwest",
+      "branchMobileNumber": 5551234567,
+      "branchEmail": "chicago_branch@example.com",
+      "branchShortId": "BR003"
+    },
+    {
+      "branchLocation": "Houston",
+      "branchRegion": "South",
+      "branchMobileNumber": 4449876543,
+      "branchEmail": "houston_branch@example.com",
+      "branchShortId": "BR004"
+    },
+    {
+      "branchLocation": "Miami",
+      "branchRegion": "Southeast",
+      "branchMobileNumber": 3334567890,
+      "branchEmail": "miami_branch@example.com",
+      "branchShortId": "BR005"
+    },
+    {
+      "branchLocation": "San Francisco",
+      "branchRegion": "West Coast",
+      "branchMobileNumber": 2229876543,
+      "branchEmail": "sf_branch@example.com",
+      "branchShortId": "BR006"
+    },
+    {
+      "branchLocation": "Seattle",
+      "branchRegion": "Northwest",
+      "branchMobileNumber": 1111234567,
+      "branchEmail": "seattle_branch@example.com",
+      "branchShortId": "BR007"
+    },
+    {
+      "branchLocation": "Dallas",
+      "branchRegion": "South",
+      "branchMobileNumber": 6664567890,
+      "branchEmail": "dallas_branch@example.com",
+      "branchShortId": "BR008"
+    },
+    {
+      "branchLocation": "Boston",
+      "branchRegion": "Northeast",
+      "branchMobileNumber": 7779876543,
+      "branchEmail": "boston_branch@example.com",
+      "branchShortId": "BR009"
+    },
+    {
+      "branchLocation": "Denver",
+      "branchRegion": "Mountain",
+      "branchMobileNumber": 8881234567,
+      "branchEmail": "denver_branch@example.com",
+      "branchShortId": "BR010"
+    }
+  ],
+  "customer": [
+    {
+      "customerShortId": "CUST001",
+      "customerName": "Alice Johnson",
+      "customerEmail": "alice.johnson@example.com",
+      "customerPhone": "1234567890",
+      "branchShortId": "BR001",
+      "createdAt": "2024-11-01T10:15:30Z",
+      "updatedAt": "2024-11-15T12:00:00Z"
+    },
+    {
+      "customerShortId": "CUST002",
+      "customerName": "Bob Smith",
+      "customerEmail": "bob.smith@example.com",
+      "customerPhone": "9876543210",
+      "branchShortId": "BR002",
+      "createdAt": "2024-11-02T11:30:00Z",
+      "updatedAt": "2024-11-16T14:30:00Z"
+    },
+    {
+      "customerShortId": "CUST003",
+      "customerName": "Carol Taylor",
+      "customerEmail": "carol.taylor@example.com",
+      "customerPhone": "1122334455",
+      "branchShortId": "BR003",
+      "createdAt": "2024-11-03T08:45:15Z",
+      "updatedAt": "2024-11-17T09:20:00Z"
+    },
+    {
+      "customerShortId": "CUST004",
+      "customerName": "David Wilson",
+      "customerEmail": "david.wilson@example.com",
+      "customerPhone": "5566778899",
+      "branchShortId": "BR004",
+      "createdAt": "2024-11-04T14:20:00Z",
+      "updatedAt": "2024-11-18T15:50:00Z"
+    },
+    {
+      "customerShortId": "CUST005",
+      "customerName": "Eve Miller",
+      "customerEmail": "eve.miller@example.com",
+      "customerPhone": "9988776655",
+      "branchShortId": "BR005",
+      "createdAt": "2024-11-05T16:10:00Z",
+      "updatedAt": "2024-11-19T17:45:00Z"
+    },
+    {
+      "customerShortId": "CUST006",
+      "customerName": "Frank Harris",
+      "customerEmail": "frank.harris@example.com",
+      "customerPhone": "2233445566",
+      "branchShortId": "BR006",
+      "createdAt": "2024-11-06T09:30:00Z",
+      "updatedAt": "2024-11-20T10:15:00Z"
+    },
+    {
+      "customerShortId": "CUST007",
+      "customerName": "Grace Martinez",
+      "customerEmail": "grace.martinez@example.com",
+      "customerPhone": "6677889900",
+      "branchShortId": "BR007",
+      "createdAt": "2024-11-07T13:50:00Z",
+      "updatedAt": "2024-11-21T14:25:00Z"
+    },
+    {
+      "customerShortId": "CUST008",
+      "customerName": "Henry Clark",
+      "customerEmail": "henry.clark@example.com",
+      "customerPhone": "3344556677",
+      "branchShortId": "BR008",
+      "createdAt": "2024-11-08T07:40:00Z",
+      "updatedAt": "2024-11-22T08:55:00Z"
+    },
+    {
+      "customerShortId": "CUST009",
+      "customerName": "Ivy Lewis",
+      "customerEmail": "ivy.lewis@example.com",
+      "customerPhone": "4455667788",
+      "branchShortId": "BR009",
+      "createdAt": "2024-11-09T12:00:00Z",
+      "updatedAt": "2024-11-23T13:30:00Z"
+    },
+    {
+      "customerShortId": "CUST010",
+      "customerName": "Jack Walker",
+      "customerEmail": "jack.walker@example.com",
+      "customerPhone": "5566778899",
+      "branchShortId": "BR010",
+      "createdAt": "2024-11-10T15:10:00Z",
+      "updatedAt": "2024-11-24T16:45:00Z"
+    }
+  ],
+  "product": [
+    {
+      "productShortId": "PRO001",
+      "productName": "Premium Laptop",
+      "brandName": "TechPro",
+      "productQuantity": 45,
+      "threshold": 10,
+      "restockQuantity": 20,
+      "needsRestock": false,
+      "description": "High-performance laptop",
+      "category": "Electronics",
+      "actualPrice": 899.99,
+      "sellingPrice": 1299.99,
+      "profit": 400,
+      "branchShortId": [
+        "BR001",
+        "BR002"
+      ]
+    },
+    {
+      "productShortId": "PRO002",
+      "productName": "Wireless Headphones",
+      "brandName": "AudioMax",
+      "productQuantity": 30,
+      "threshold": 5,
+      "restockQuantity": 15,
+      "needsRestock": false,
+      "description": "Noise cancelling headphones",
+      "category": "Audio",
+      "actualPrice": 150,
+      "sellingPrice": 249.99,
+      "profit": 99.99,
+      "branchShortId": [
+        "BR001"
+      ]
+    },
+    {
+      "productShortId": "PRO003",
+      "productName": "Gaming Laptop",
+      "brandName": "GamePro",
+      "productQuantity": 10,
+      "threshold": 3,
+      "restockQuantity": 5,
+      "needsRestock": true,
+      "description": "High-performance laptop for gamers",
+      "category": "Computers",
+      "actualPrice": 1200,
+      "sellingPrice": 1499.99,
+      "profit": 299.99,
+      "branchShortId": [
+        "BR003"
+      ]
+    },
+    {
+      "productShortId": "PRO004",
+      "productName": "Bluetooth Speaker",
+      "brandName": "AudioMax",
+      "productQuantity": 25,
+      "threshold": 5,
+      "restockQuantity": 10,
+      "needsRestock": false,
+      "description": "Portable speaker with deep bass",
+      "category": "Audio",
+      "actualPrice": 60,
+      "sellingPrice": 99.99,
+      "profit": 39.99,
+      "branchShortId": [
+        "BR001",
+        "BR004"
+      ]
+    },
+    {
+      "productShortId": "PRO005",
+      "productName": "4K Smart TV",
+      "brandName": "VisionTech",
+      "productQuantity": 8,
+      "threshold": 2,
+      "restockQuantity": 4,
+      "needsRestock": true,
+      "description": "Ultra HD Smart TV with HDR",
+      "category": "Electronics",
+      "actualPrice": 800,
+      "sellingPrice": 999.99,
+      "profit": 199.99,
+      "branchShortId": [
+        "BR002"
+      ]
+    },
+    {
+      "productShortId": "PRO006",
+      "productName": "Fitness Tracker",
+      "brandName": "HealthFit",
+      "productQuantity": 40,
+      "threshold": 5,
+      "restockQuantity": 10,
+      "needsRestock": false,
+      "description": "Track your health and fitness levels",
+      "category": "Wearables",
+      "actualPrice": 50,
+      "sellingPrice": 79.99,
+      "profit": 29.99,
+      "branchShortId": [
+        "BR001",
+        "BR002",
+        "BR003"
+      ]
+    },
+    {
+      "productShortId": "PRO007",
+      "productName": "Wireless Mouse",
+      "brandName": "ClickTech",
+      "productQuantity": 100,
+      "threshold": 15,
+      "restockQuantity": 30,
+      "needsRestock": false,
+      "description": "Ergonomic wireless mouse",
+      "category": "Accessories",
+      "actualPrice": 15,
+      "sellingPrice": 24.99,
+      "profit": 9.99,
+      "branchShortId": [
+        "BR004"
+      ]
+    },
+    {
+      "productShortId": "PRO008",
+      "productName": "Digital Camera",
+      "brandName": "PhotoPro",
+      "productQuantity": 5,
+      "threshold": 5,
+      "restockQuantity": 10,
+      "needsRestock": true,
+      "description": "Professional digital camera with 4K video",
+      "category": "Photography",
+      "actualPrice": 700,
+      "sellingPrice": 899.99,
+      "profit": 199.99,
+      "branchShortId": [
+        "BR002"
+      ]
+    },
+    {
+      "productShortId": "PRO009",
+      "productName": "Tablet",
+      "brandName": "TechBrand",
+      "productQuantity": 15,
+      "threshold": 5,
+      "restockQuantity": 10,
+      "needsRestock": false,
+      "description": "Lightweight and powerful tablet",
+      "category": "Computers",
+      "actualPrice": 300,
+      "sellingPrice": 449.99,
+      "profit": 149.99,
+      "branchShortId": [
+        "BR001",
+        "BR003"
+      ]
+    },
+    {
+      "productShortId": "PRO010",
+      "productName": "Smart Watch",
+      "brandName": "TimeTech",
+      "productQuantity": 20,
+      "threshold": 10,
+      "restockQuantity": 15,
+      "needsRestock": false,
+      "description": "Smartwatch with fitness tracking",
+      "category": "Wearables",
+      "actualPrice": 120,
+      "sellingPrice": 199.99,
+      "profit": 79.99,
+      "branchShortId": [
+        "BR001",
+        "BR004"
+      ]
+    }
+  ],
+  "order" : [
+    {
+      "orderShortID": 1001,
+      "customerShortId": "CUST001",
+      "productShortId": "PROD101",
+      "quantity": 5,
+      "totalPrice": 249.95,
+      "transactionStatus": "Completed",
+      "orderDate": "2024-03-15"
+    },
+    {
+      "orderShortID": 1002,
+      "customerShortId": "CUST002",
+      "productShortId": "PROD103",
+      "quantity": 2,
+      "totalPrice": 159.90,
+      "transactionStatus": "Pending",
+      "orderDate": "2024-03-16"
+    },
+    {
+      "orderShortID": 1003,
+      "customerShortId": "CUST003",
+      "productShortId": "PROD105",
+      "quantity": 1,
+      "totalPrice": 499.99,
+      "transactionStatus": "Processing",
+      "orderDate": "2024-03-16"
+    },
+    {
+      "orderShortID": 1004,
+      "customerShortId": "CUST001",
+      "productShortId": "PROD102",
+      "quantity": 3,
+      "totalPrice": 74.97,
+      "transactionStatus": "Completed",
+      "orderDate": "2024-03-17"
+    },
+    {
+      "orderShortID": 1005,
+      "customerShortId": "CUST004",
+      "productShortId": "PROD104",
+      "quantity": 4,
+      "totalPrice": 199.96,
+      "transactionStatus": "Completed",
+      "orderDate": "2024-03-17"
+    }
+  ]
+}

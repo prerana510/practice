@@ -1,0 +1,8 @@
+{
+    "port": 5003,
+    "watch": true,
+    "routes": {
+      "/api/product/all": "/retail/product",
+      "/api/product/branch/:branchId": "/retail/products/:branchShortId"
+    }
+  }
