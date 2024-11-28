@@ -30,15 +30,7 @@ const ProductTable: React.FC = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            // import products from json file
-            
             try {
-                // const response = await fetch('../../../mock-db.json'); // Assuming the mock DB is at root or public folder
-                // const response = data;
-                // if (!response.ok) {
-                //     throw new Error('Network response was not ok');
-                // }
-                // const data: { retail: { products: Product[] } } = await response.json();
                 setProducts(productsData.product);
             } catch (error: any) {
                 setError(error.message);
@@ -49,41 +41,16 @@ const ProductTable: React.FC = () => {
 
         fetchProducts();
     }, []);
-    //             const role = sessionStorage.getItem('role');
-    //             const branchShortId = sessionStorage.getItem('branchShortId');
-    //             let endpoint = '';
-
-    //             // Determine endpoint based on role
-    //             if (role === 'business_retailer') {
-    //                 endpoint = `http://localhost:5003/api/retail/product/all`;
-    //             } else if (branchShortId) {
-    //                 endpoint = `http://localhost:5003/api/product/branch/${branchShortId}`;
-    //             } else {
-    //                 throw new Error('Branch Short ID not found in sessionStorage');
-    //             }
-
-    //             const response = await fetch(endpoint);
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             const data: Product[] = await response.json();
-    //             setProducts(data);
-    //         } catch (error: any) {
-    //             setError(error.message);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchProducts();
-    // }, []);
 
     // Pagination calculations
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
     const filteredProducts = products.filter(product =>
-        product.productName.toLowerCase().includes(searchTerm.toLowerCase())
+        product.productShortId.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.brandName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -108,24 +75,34 @@ const ProductTable: React.FC = () => {
 
     return (
         <div className="p-6 space-y-6">
-            <div className="flex justify-between items-center mb-6">
-                <button
-                    onClick={() => navigate('/retail/main')}
-                    className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg
-                    hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md
-                    flex items-center gap-2"
-                >
-                    <span>← Back</span>
-                </button>
-                <div className="relative w-1/3">
+            <div className="flex items-center space-x-4">
+                <div className="flex-grow">
                     <input
                         type="text"
-                        placeholder="Search products..."
+                        placeholder="Search products by ID, name, brand, or category..."
                         value={searchTerm}
                         onChange={handleSearchChange}
                         className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 
                         focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300"
                     />
+                </div>
+                <div className="flex space-x-4">
+                    <button
+                        onClick={() => navigate('/retail/productForm')}
+                        className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg
+                        hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md
+                        flex items-center gap-2 whitespace-nowrap"
+                    >
+                        <span>Add Product</span>
+                    </button>
+                    <button
+                        onClick={() => navigate('/retail/restock')}
+                        className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg
+                        hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md
+                        flex items-center gap-2 whitespace-nowrap"
+                    >
+                        <span>Restock Products</span>
+                    </button>
                 </div>
             </div>
 
@@ -173,7 +150,7 @@ const ProductTable: React.FC = () => {
                                     </td>
                                     <td className="px-6 py-4">
                                         <button
-                                            onClick={() => navigate(`/products/product/${product.productShortId}`)}
+                                            onClick={() => navigate(`/retail/products/product/${product.productShortId}`)}
                                             className="px-4 py-2 bg-indigo-600 text-white rounded-lg
                                             hover:bg-indigo-700 transition-colors duration-300"
                                         >

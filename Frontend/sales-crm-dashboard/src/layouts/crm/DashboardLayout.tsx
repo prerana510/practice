@@ -1,19 +1,25 @@
+// DashboardLayout.tsx
 import React from 'react';
 import Sidebar from '../../components/retail/Sidebar';
 import Navbar from '../../components/crm/Navbar';
-import styles from '../../styles/crm/dashboardlayout.module.css';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className={styles.dashboardLayout}>
-      <div className={styles.navbarContainer}>
+    <div className="flex flex-col min-h-screen">
+      {/* Navbar Container */}
+      <div className="sticky top-0 z-50 w-full">
         <Navbar />
       </div>
-      <div className={styles.layoutMain}>
-        <div className={styles.sidebarContainer}>
+
+      {/* Main Layout */}
+      <div className="flex flex-grow">
+        {/* Sidebar Container */}
+        <div className="fixed w-64 min-h-screen">
           <Sidebar />
         </div>
-        <div className={styles.contentArea}>
+
+        {/* Content Area */}
+        <div className="flex flex-col flex-grow ml-64 pt-16 p-6 overflow-y-auto">
           {children}
         </div>
       </div>

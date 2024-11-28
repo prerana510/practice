@@ -1,154 +1,189 @@
 import React, { useState } from 'react';
-import DashboardLayout from '../../layouts/crm/DashboardLayout';
 import { Link, useNavigate } from 'react-router-dom';
 
+interface BranchFormData {
+  branchLocation: string;
+  branchRegion: string;
+  branchMobileNumber: string;
+  branchEmail: string;
+}
+
 const BranchForm: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<BranchFormData>({
     branchLocation: '',
     branchRegion: '',
     branchMobileNumber: '',
     branchEmail: '',
   });
 
-  const [message, setMessage] = useState<string>('');
+  const [submissionStatus, setSubmissionStatus] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage('');
+    setIsSubmitting(true);
+    setSubmissionStatus(null);
 
     try {
-      // Import mock data
       const mockData = await import('../../data/mock-db.json');
       const branches = mockData.branch;
-
-      // Generate a new branch short ID
       const newBranchShortId = `BR-${branches.length + 1}`;
-
-      // Create new branch object
       const newBranch = {
         ...formData,
         branchShortId: newBranchShortId,
         branchMobileNumber: parseInt(formData.branchMobileNumber, 10)
       };
 
-      // In a real app, you'd send this to a backend
-      setMessage('Branch created successfully');
-      
-      // Reset form
-      setFormData({ 
-        branchLocation: '', 
-        branchRegion: '', 
-        branchMobileNumber: '', 
-        branchEmail: '' 
+      setSubmissionStatus('Branch created successfully');
+      setFormData({
+        branchLocation: '',
+        branchRegion: '',
+        branchMobileNumber: '',
+        branchEmail: ''
       });
-
-      // Optionally navigate to branch list
       navigate('/branches');
     } catch (error) {
-      console.error('Error creating branch:', error);
-      setMessage('An unexpected error occurred. Please try again later.');
+      console.error('Error:', error);
+      setSubmissionStatus('Error creating branch. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <DashboardLayout>
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-800">Create New Branch</h1>
-          <Link 
-            to="/branches" 
-            className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
-          >
-            View All Branches
-          </Link>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4">
+            <h1 className="text-2xl font-bold text-white">Add a Branch</h1>
+          </div>
 
-        <div className="max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
-            {message && (
-              <div className={`p-4 rounded-md text-center ${message.startsWith('Error') 
-                ? 'bg-red-100 text-red-800' 
-                : 'bg-green-100 text-green-800'}`}>
-                {message}
+          {/* Form Container */}
+          <div className="p-6">
+            {/* Submission Status Message */}
+            {submissionStatus && (
+              <div 
+                className={`mb-4 p-4 rounded-lg text-center font-semibold ${
+                  submissionStatus.includes('successfully') 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'bg-red-100 text-red-800'
+                }`}
+              >
+                {submissionStatus}
               </div>
             )}
 
-            <div className="grid grid-cols-1 gap-6">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Branch Location */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Branch Location
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
                 <input
                   type="text"
                   name="branchLocation"
                   value={formData.branchLocation}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter branch location"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
+              {/* Branch Region */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Branch Region
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Region</label>
                 <input
                   type="text"
                   name="branchRegion"
                   value={formData.branchRegion}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Enter branch region"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
+              {/* Branch Mobile Number */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Branch Mobile Number
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Mobile Number</label>
                 <input
                   type="tel"
                   name="branchMobileNumber"
                   value={formData.branchMobileNumber}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="+1 (123) 456-7890"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
+              {/* Branch Email */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Branch Email
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <input
                   type="email"
                   name="branchEmail"
                   value={formData.branchEmail}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="branch@example.com"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
-            </div>
 
-            <div>
-              <button
-                type="submit"
-                className="w-full px-4 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              >
-                Create Branch
-              </button>
-            </div>
-          </form>
+              {/* Action Buttons */}
+              <div className="md:col-span-2 flex justify-between mt-6">
+                <button 
+                  type="button"
+                  onClick={() => navigate(-1)}
+                  className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-300"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg 
+                  hover:bg-indigo-700 transition-colors duration-300
+                  disabled:opacity-50 disabled:cursor-not-allowed 
+                  flex items-center justify-center space-x-2"
+                >
+                  {isSubmitting ? (
+                    <svg 
+                      className="animate-spin h-5 w-5 mr-2" 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      fill="none" 
+                      viewBox="0 0 24 24"
+                    >
+                      <circle 
+                        className="opacity-25" 
+                        cx="12" 
+                        cy="12" 
+                        r="10" 
+                        stroke="currentColor" 
+                        strokeWidth="4"
+                      ></circle>
+                      <path 
+                        className="opacity-75" 
+                        fill="currentColor" 
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  ) : null}
+                  <span>Add Branch</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </DashboardLayout>
+    </div>
   );
 };
 
