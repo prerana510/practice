@@ -89,19 +89,23 @@ const ProductTable: React.FC = () => {
                 <div className="flex space-x-4">
                     <button
                         onClick={() => navigate('/retail/productForm')}
-                        className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg
-                        hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md
+                        className="px-4 py-2 bg-white border border-indigo-600 rounded-lg
+                        hover:bg-gray-50 transition-all duration-300 shadow-md
                         flex items-center gap-2 whitespace-nowrap"
                     >
-                        <span>Add Product</span>
+                        <span className="bg-gradient-to-r from-indigo-600 to-purple-600 inline-block text-transparent bg-clip-text">
+                            Add Product
+                        </span>
                     </button>
                     <button
                         onClick={() => navigate('/retail/restock')}
-                        className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg
-                        hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md
+                        className="px-4 py-2 bg-white border border-indigo-600 rounded-lg
+                        hover:bg-gray-50 transition-all duration-300 shadow-md
                         flex items-center gap-2 whitespace-nowrap"
                     >
-                        <span>Restock Products</span>
+                        <span className="bg-gradient-to-r from-indigo-600 to-purple-600 inline-block text-transparent bg-clip-text">
+                            Restock Products
+                        </span>
                     </button>
                 </div>
             </div>
